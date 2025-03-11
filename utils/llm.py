@@ -3,6 +3,14 @@ import time
 import numpy as np
 import google.generativeai as genai
 
+MODEL_FULL_NAME = {
+    "llama3-8b-instruct": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "llama3-8b": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "llama3.1-8b": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "llama3-70b-instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
+    "llama3-70b": "meta-llama/Meta-Llama-3-70B-Instruct",
+    "llama3.1-70b": "meta-llama/Meta-Llama-3.1-70B-Instruct",
+}
 
 class ChatGPT:
     def __init__(self, model_name, key, system_message=None):
@@ -143,8 +151,12 @@ class vLLM:
     def generate(self, prompt):
         try:
             options = self.get_model_options()
+            if self.model_name.startswith("llama"): # base llama
+                model = MODEL_FULL_NAME[self.model_name]
+            else: # ToolQA
+                model = f"/scratch/project_462000812/checkpoints/{self.model_name}"
             completion = self.client.chat.completions.create(
-                model=self.model_name,
+                model=model,
                 messages=[
                     {"role": "system", "content": self.system_message},
                     {"role": "user", "content": prompt},

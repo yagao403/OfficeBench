@@ -63,6 +63,7 @@ class LLMPolicy(BasePolicy):
         elif 'gemini' in model_name:
             self.llm = Gemini(model_name, key, self.system_message)
         else:
+            print("Use vLLM")
             self.llm = vLLM(model_name, self.system_message)
             
         self.llm_history = []
