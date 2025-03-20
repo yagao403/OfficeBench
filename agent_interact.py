@@ -20,12 +20,14 @@ def main(docker_name='officebench',
          task=None,
          tag=None,
          max_iter=20,
-         mode='default'):
+         mode='default',
+         add_hints=False):
     build_docker(docker_name, dockerfile_path)
 
     config = json.load(open(config_file))
-    task = config.get('task', task)
-    subtask_id = config_file.split('/')[-1].split('.')[0]
+    task = config.get('task', task) 
+    task_id = task_dir.split('/')[-1] # e.g., 1-1
+    subtask_id = config_file.split('/')[-1].split('.')[0] # e.g., 0
     if tag is None:
         timezone = pytz.timezone('America/Los_Angeles')
         tag = datetime.now(timezone).strftime('%Y%m%d%H%M%S')
@@ -82,6 +84,9 @@ def main(docker_name='officebench',
         key=api_key,
         env=env,
         config=config,
+        task_id=task_id,
+        subtask_id=subtask_id,
+        add_hints=add_hints,
         llm_cache=llm_cache,
         debug_mode=True,
     )

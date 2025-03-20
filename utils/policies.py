@@ -2,7 +2,7 @@ import json
 import apps
 
 from utils.llm import ChatGPT, Gemini, vLLM
-
+from tips import TIPS_DICT
 import logging
 
 
@@ -52,9 +52,42 @@ PROMPT_DICT = {
         '##Command:'
     )
 }
+PROMPT_DICT_w_TIPS = {
+    'prompt_undecided_app': (
+        '##Task: {task}\n'
+        '##Available apps: {available_apps}\n'
+        '##Instruction:\n'
+        " - choose an app from the avaiblable apps: {{'app': 'system', 'action': 'switch_app', 'target_app': [THE_APP_YOU_CHOOSE]}}\n"
+        '##Hints: {hints}\n'
+        '##Command:'
+    ),
+    'prompt_undecided_app_w_history': (
+        '##Task: {task}\n'
+        '##History:\n'
+        '{history}'
+        '##Available apps: {available_apps}\n'
+        '##Instruction:\n'
+        " - choose an app from the avaiblable apps: {{'app': 'system', 'action': 'switch_app', 'target_app': [THE_APP_YOU_CHOOSE]}}\n"
+        '##Hints: {hints}\n'
+        '##Command:'
+    ),
+    'prompt_decided_app': (
+        '##Task: {task}\n'
+        '##History:\n'
+        '{history}'
+        '##Current apps: {current_app}\n'
+        '##Instruction: Choose one action from the list as the next step.\n'
+        '{detailed_instruction}'
+        " - switch to another app among {available_apps}: {{'app': 'system', 'action': 'switch_app', 'target_app': [THE_APP_YOU_CHOOSE]}}\n"
+        " - finish the task with your answer as None if the task is not a question: {{'app': 'system', 'action': 'finish_task', 'answer': 'None'}}\n"
+        " - finish the task with your answer if the task is a question: {{'app': 'system', 'action': 'finish_task', 'answer': [ANSWER]}}\n"
+        '##Hints: {hints}\n'
+        '##Command:'
+    )
+}
 
 class LLMPolicy(BasePolicy):
-    def __init__(self, model_name, key, env, config, llm_cache=None, debug_mode=False):
+    def __init__(self, model_name, key, env, config, task_id, subtask_id, add_hints=False, llm_cache=None, debug_mode=False):
         super().__init__()
 
         self.system_message = self.construct_system_message(config, env.available_apps)
@@ -70,6 +103,11 @@ class LLMPolicy(BasePolicy):
 
         self.action_window = []
         self.action_window_size = 5
+
+        self.task_id = task_id
+        self.subtask_id = subtask_id # used to construct task-specific hints
+
+        self.add_hints = add_hints # whether to add hints to the prompt
 
         self.llm_cache = llm_cache
 
@@ -110,7 +148,7 @@ class LLMPolicy(BasePolicy):
         return action
 
     def forward(self, env):
-        prompt = self.build_prompt(env)
+        prompt = self.build_prompt(env, add_hints=self.add_hints)
         if self.llm_cache:
             if prompt in self.llm_cache:
                 print('!!!')
@@ -142,14 +180,26 @@ class LLMPolicy(BasePolicy):
             action = repr({'app': 'system', 'action': 'got_stuck'})   
 
         return action
-    
-    def build_prompt(self, env):
+
+    def build_prompt(self, env, add_hints=False):
         if env.current_app is None:
             if len(env.history) == 0:
                 prompt = PROMPT_DICT['prompt_undecided_app'].format_map({
                     'task': env.task,
                     'available_apps': list(env.available_apps.keys()),
                 })
+                if add_hints:
+                    if self.task_id in TIPS_DICT:  
+                        if self.subtask_id in TIPS_DICT[self.task_id]:
+                            hints = TIPS_DICT[self.task_id][self.subtask_id]
+                            if hints != '':
+                                prompt = PROMPT_DICT_w_TIPS['prompt_undecided_app'].format_map({
+                                    'task': env.task,
+                                    'available_apps': list(env.available_apps.keys()),
+                                    'hints': hints,
+                                })
+                # else:
+                #     print("No hints for task: ", self.task_id, self.subtask_id)
             else:
                 # construct history
                 history = ''
@@ -164,6 +214,17 @@ class LLMPolicy(BasePolicy):
                     'history': history,
                     'available_apps': list(env.available_apps.keys()),
                 })
+                if add_hints:
+                    if self.task_id in TIPS_DICT:
+                        if self.subtask_id in TIPS_DICT[self.task_id]:
+                            hints = TIPS_DICT[self.task_id][self.subtask_id]
+                            if hints != '':
+                                prompt = PROMPT_DICT_w_TIPS['prompt_undecided_app_w_history'].format_map({
+                                    'task': env.task,
+                                    'history': history,
+                                    'available_apps': list(env.available_apps.keys()),
+                                    'hints': hints,
+                                })
         else:
             # construct history
             history = ''
@@ -186,6 +247,19 @@ class LLMPolicy(BasePolicy):
                 'detailed_instruction': detailed_instruction,
                 'available_apps': avaiblable_apps,
             })
+            if add_hints:
+                if self.task_id in TIPS_DICT:
+                    if self.subtask_id in TIPS_DICT[self.task_id]:
+                        hints = TIPS_DICT[self.task_id][self.subtask_id]
+                        if hints != '':
+                            prompt = PROMPT_DICT_w_TIPS['prompt_decided_app'].format_map({
+                                'task': env.task,
+                                'history': history,
+                                'current_app': env.current_app,
+                                'detailed_instruction': detailed_instruction,
+                                'available_apps': avaiblable_apps,
+                                'hints': hints,
+                            })
 
         return prompt
 
