@@ -13,6 +13,9 @@ from utils.evaluate import (
     evaluate_exact_match,
     evaluate_calendar_no_overlap
 )
+from datetime import datetime
+
+# python evaluation.py --model_name llama3.1-70b --tag_name test --task_mode train
 
 def evaluate_output(task_id, subtask_id, output_dir):
     print(f"Evaluating {task_id} {subtask_id} {output_dir}...")
@@ -27,7 +30,7 @@ def evaluate_output(task_id, subtask_id, output_dir):
             return False
     return True
 
-def main(model_name='gpt-4o-2024-05-13', tag_name='test', result_dir='./results', output_subdir='outputs'):
+def main(model_name='gpt-4o-2024-05-13', tag_name='test', result_dir='./results', output_subdir='outputs', task_mode='train'):
     results_dict = {
         "1": [],
         "2": [],
@@ -39,10 +42,14 @@ def main(model_name='gpt-4o-2024-05-13', tag_name='test', result_dir='./results'
     all_tasks_info = []
     unfound_result_cases = []
     #result_path = f'{result_dir}/{model_name.replace("/", "_")}_{tag_name}_result.jsonl'
-    result_path = f'{result_dir}/{model_name}_{tag_name}_result.jsonl'
+
+    ts = datetime.now().strftime('%Y%m%d%H%M%S')
+
+    result_path = f'{result_dir}/{model_name}_{tag_name}_result_{ts}.jsonl'
     f_result = open(result_path, 'w')
 
-    all_config_filepaths = glob.glob(f"./tasks/*/subtasks/*.json")
+    task_mode = f'tasks_{task_mode}' if task_mode == 'train' or task_mode == 'test' else 'tasks'
+    all_config_filepaths = glob.glob(f"./{task_mode}/*/subtasks/*.json")
     for config_filepath in all_config_filepaths:
         # ./tasks/1-1/subtasks/0.json
         task_id = config_filepath.split('/')[2]
@@ -55,7 +62,7 @@ def main(model_name='gpt-4o-2024-05-13', tag_name='test', result_dir='./results'
         num_app_tag = task_id[0]
         # ./tasks/3-42/outputs/0/gemini-1.5-pro_jun11-gemini/testbed/
         # result_testbed_dir = f"./tasks/{task_id}/{output_subdir}/{subtask_id}/{model_name.replace("/", "_")}_{tag_name}/testbed"
-        result_testbed_dir = f"./tasks/{task_id}/{output_subdir}/{subtask_id}/{model_name}_{tag_name}/testbed"
+        result_testbed_dir = f"./{task_mode}/{task_id}/{output_subdir}/{subtask_id}/{model_name}_{tag_name}/testbed"
         if os.path.exists(result_testbed_dir):
             print(f"Found {result_testbed_dir}")
             try:
