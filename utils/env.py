@@ -108,7 +108,7 @@ class OfficeAgentEnv(IntercodeEnv):
                 proc_action[k] = v
         return proc_action
 
-    def exec_action(self, action_string: str) -> None:
+    def exec_action(self, action_string: str) -> None: # exec_action(self, action_str: str, monologue: str) -> None:
         self.observation = None
         try:
             action = eval(action_string)
@@ -163,14 +163,14 @@ class OfficeAgentEnv(IntercodeEnv):
                 if self.observation == "" and action["app"] == "shell":
                     self.observation = f"Successfully executed command: {command}. The output was [{output.decode('utf-8')}]."
 
-            self.history.append((action, self.observation))
+            self.history.append((action, self.observation)) # self.history.append((action, self.observation, monologue))
         except Exception as e:
             print('!!!!!!!!')
             print(e)
             print('!!!!!!!!')
             self.observation = "Malformed action! You must follow the given action format! Try a different action."
             self.info[ACTION_EXEC] = False
-            self.history.append((action_string, self.observation))
+            self.history.append((action_string, self.observation)) # self.history.append((action_string, self.observation, monologue))
         return
             
     def get_reward(self) -> Tuple[float, Dict]:

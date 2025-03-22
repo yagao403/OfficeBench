@@ -96,8 +96,8 @@ def main(docker_name='officebench',
         n_iter = 0
         while not done:
             n_iter += 1
-            action = policy.forward(env)
-            obs, reward, done, info = env.step(action)
+            action = policy.forward(env) # action, monologue = policy.forward(env)
+            obs, reward, done, info = env.step(action) # obs, reward, done, info = env.step(action, monologue)
             if n_iter >= max_iter:
                 print(f"Max iterations reached: {max_iter}")
                 break

@@ -78,7 +78,7 @@ class IntercodeEnv(ABC, gym.Env):
         if not self.tool_mode:
             self.logger.info("* Note *: `reset` should be explicitly called to load new task episode")
     
-    def step(self, action: str) -> Tuple[str, int, bool, Dict]:
+    def step(self, action: str) -> Tuple[str, int, bool, Dict]: # step(self, action: str, monologue: str)
         """
         Runs given action in environment and returns corresponding output
         
@@ -94,7 +94,7 @@ class IntercodeEnv(ABC, gym.Env):
         if action == "skip":
             return "skipped", 0, True, {}
         
-        self.exec_action(action)
+        self.exec_action(action) # self.exec_action(action, monologue) -> update env.history 
         self.logger.info(f"Action: {action}")
         self.logger.info(f"Observation: {self.observation}")
         self.trajectory.append((action, self.observation))
