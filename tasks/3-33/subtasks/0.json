@@ -14,13 +14,13 @@
         {
             "function": "evaluate_file_exist",
             "args": {
-                "file": "calendar/Smith.ics"
+                "file": "calendar/Bob.ics"
             }
         },
         {
-            "function": "evaluate_not_contain",
+            "function": "evaluate_contain",
             "args": {
-                "file": "calendar/Smith.ics",
+                "file": "calendar/Bob.ics",
                 "doc_type": "ics",
                 "keywords": [
                     "DTSTART:20240601T1000"

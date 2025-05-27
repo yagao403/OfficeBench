@@ -3,7 +3,7 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "add 'average salary' for each day to the last row in salary excel file, round down with no decimal",
+  "task": "The table shows salary yearly. Add 'average salary' for each day to the last row in salary excel file, round with no decimal",
   "evaluation": [
     {
       "function": "evaluate_excel_cell_value",
@@ -18,7 +18,7 @@
           {
             "row": "5",
             "col": "2",
-            "value": "1095"
+            "value": "1096"
           }
         ]
       }

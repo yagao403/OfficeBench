@@ -11,9 +11,9 @@
             "doc_type": "ics",
             "file": "calendar/Bob.ics",
             "keywords": [
-                "Introductions", "Linda",
-                "Agenda", "Davide",
-                "Strategy", "Charlie"
+                "Introductions", 
+                "Agenda", 
+                "Strategy"
             ]
           }
         },

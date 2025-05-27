@@ -19,8 +19,8 @@
         },
         {
             "function": "evaluate_excel_cell_value",
-            "file": "./data/new.xlsx",
             "args": {
+                "file": "./data/new.xlsx",
                 "matches": [
                     {
                         "row": "4",

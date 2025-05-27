@@ -3,12 +3,12 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "company increases base by 5%/yr, stock by 10%/yr, bonus by 10%/yr, show this in salary excel file with new header 'amount after 1 year'",
+  "task": "company increases base by 5%/yr, stock by 10%/yr, bonus by 10%/yr, show this in salary excel file with new header 'amount after 1 year'. Round down with no decimal.",
   "evaluation": [
     {
       "function": "evaluate_excel_cell_value",
       "args": {
-        "file": "./data/company_budget.xlsx",
+        "file": "./data/salary.xlsx",
         "matches": [
           {
             "row": "1",
@@ -21,22 +21,22 @@
     {
       "function": "evaluate_excel_cell_value",
       "args": {
-        "file": "./data/company_budget.xlsx",
+        "file": "./data/salary.xlsx",
         "matches": [
           {
             "row": "2",
             "col": "3",
-            "value": "2,100,000"
+            "value": "210000"
           },
           {
             "row": "3",
             "col": "3",
-            "value": "55,000"
+            "value": "110000"
           },
           {
             "row": "4",
             "col": "3",
-            "value": "1,100"
+            "value": "110000"
           }
         ]
       }

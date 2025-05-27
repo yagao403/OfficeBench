@@ -5,12 +5,7 @@
     "time": "10:00 AM",
     "task": "Scan PDF homework and save as homework.docx for editing, save homework file into folder named homework",
     "evaluation": [
-        {
-            "function": "evaluate_file_exist",
-            "args": {
-                "file": "data/homework.docx"
-            }
-        },
+
         {
             "function": "evaluate_file_exist",
             "args": {

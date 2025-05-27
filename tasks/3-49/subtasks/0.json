@@ -3,7 +3,7 @@
     "date": "2020-05-01",
     "weekday": "Friday",
     "time": "10:00 AM",
-    "task": "schedule a helping section, pair one student whose score is in section A/B and one student in section C, create calendar events for each of them using their names, email those students for notification",
+    "task": "schedule a helping section for each student in section C, create calendar events for each of them using their names, email those students for notification",
     "evaluation": [
         {
             "function": "evaluate_contain",

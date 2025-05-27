@@ -6,19 +6,79 @@
   "task": "split midterm1 and midterm2 scores in score excel file into two excel files, name them as midterm1.xlsx and midterm2.xlsx",
   "evaluation": [
     {
-      "function": "evaluate_exact_match",
+      "function": "evaluate_excel_cell_value",
       "args": {
-        "doc_type": "xlsx",
-        "result_file": "./data/midterm1.xlsx",
-        "expected_file": "../../../../reference/midterm1.xlsx"
+        "file": "data/midterm1.xlsx",
+        "matches": [
+          {
+            "row": 2,
+            "col": 1,
+            "value": "Liam"
+          },
+          {
+            "row": 2,
+            "col": 2,
+            "value": "74"
+          },
+          {
+            "row": 3,
+            "col": 1,
+            "value": "Ivy"
+          },
+          {
+            "row": 3,
+            "col": 2,
+            "value": "64"
+          },
+          {
+            "row": 4,
+            "col": 1,
+            "value": "Alice"
+          },
+          {
+            "row": 4,
+            "col": 2,
+            "value": "78"
+          }
+        ]
       }
     },
     {
-      "function": "evaluate_exact_match",
+      "function": "evaluate_excel_cell_value",
       "args": {
-        "doc_type": "xlsx",
-        "result_file": "./data/midterm2.xlsx",
-        "expected_file": "../../../../reference/midterm2.xlsx"
+        "file": "data/midterm2.xlsx",
+        "matches": [
+          {
+            "row": 2,
+            "col": 1,
+            "value": "Liam"
+          },
+          {
+            "row": 2,
+            "col": 2,
+            "value": "72"
+          },
+          {
+            "row": 3,
+            "col": 1,
+            "value": "Ivy"
+          },
+          {
+            "row": 3,
+            "col": 2,
+            "value": "90"
+          },
+          {
+            "row": 4,
+            "col": 1,
+            "value": "Alice"
+          },
+          {
+            "row": 4,
+            "col": 2,
+            "value": "75"
+          }
+        ]
       }
     }
   ]

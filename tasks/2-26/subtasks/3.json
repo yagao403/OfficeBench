@@ -8,7 +8,7 @@
       {
         "function": "evaluate_contain",
         "args": {
-          "file": "data/market_analysis.docx",
+          "file": "data/invitation_letter.docx",
           "doc_type": "doc",
           "keywords": [
             "IAEM",

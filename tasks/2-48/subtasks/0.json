@@ -3,7 +3,7 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "extract Bob's and Tom's calendar and count their sleeping time, saved to excel file named events.xlsx, first row is Bob, second row is Tom",
+  "task": "extract Bob's and Tom's calendar and count their sleeping time, saved to excel file named events.xlsx, first row is Bob, second row is Tom. If there is no events related to sleeping, then the sleeping time is 0.",
   "evaluation": [
     {
         "function": "evaluate_file_exist",
@@ -12,22 +12,15 @@
         }
     },
     {
-        "function": "evaluate_excel_cell_value",
-        "file": "data/events.xlsx",
-        "args": {
-          "matches": [
-            {
-              "row": "1",
-              "col": "2",
-              "value": "4"
-            },
-            {
-              "row": "2",
-              "col": "2",
-              "value": "0"
-            }
-          ]
-        }
+      "function": "evaluate_contain",
+      "args": {
+        "doc_type": "xlsx",
+        "file": "./data/events.xlsx",
+        "keywords": [
+          "4",
+          "0"
+        ]
+      }
     }
   ]
 }

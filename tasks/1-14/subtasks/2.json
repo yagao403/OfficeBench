@@ -3,14 +3,25 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "swap the lowest and highest incoming item in salary excel file",
+  "task": "swap the whole rows of the lowest and highest incoming item in salary excel file",
   "evaluation": [
+
     {
-      "function": "evaluate_exact_match",
+      "function": "evaluate_excel_cell_value",
       "args": {
-        "doc_type": "xlsx",
-        "result_file": "./data/salery.xlsx",
-        "expected_file": "../../../../reference/salery.xlsx"
+        "file": "./data/salary.xlsx",
+        "matches": [
+          {
+            "row": "2",
+            "col": "1",
+            "value": "stock"
+          },
+          {
+            "row": "3",
+            "col": "1",
+            "value": "base"
+          }
+        ]
       }
     }
   ]

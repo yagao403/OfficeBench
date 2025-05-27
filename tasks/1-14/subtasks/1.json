@@ -6,11 +6,56 @@
   "task": "swap column of midterm1 and midterm2 in score excel file",
   "evaluation": [
     {
-      "function": "evaluate_exact_match",
+      "function": "evaluate_excel_cell_value",
       "args": {
-        "doc_type": "xlsx",
-        "result_file": "./data/score.xlsx",
-        "expected_file": "../../../../reference/score_swap_column.xlsx"
+        "file": "data/score.xlsx",
+        "matches": [
+          {
+            "row": 2,
+            "col": 1,
+            "value": "Liam"
+          },
+          {
+            "row": 2,
+            "col": 2,
+            "value": "72"
+          },
+          {
+            "row": 2,
+            "col": 3,
+            "value": "74"
+          },
+          {
+            "row": 3,
+            "col": 1,
+            "value": "Ivy"
+          },
+          {
+            "row": 3,
+            "col": 2,
+            "value": "90"
+          },
+          {
+            "row": 3,
+            "col": 3,
+            "value": "64"
+          },
+          {
+            "row": 4,
+            "col": 1,
+            "value": "Alice"
+          },
+          {
+            "row": 4,
+            "col": 2,
+            "value": "75"
+          },
+          {
+            "row": 4,
+            "col": 3,
+            "value": "78"
+          }
+        ]
       }
     }
   ]

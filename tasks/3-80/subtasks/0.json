@@ -8,7 +8,7 @@
         {
             "function": "evaluate_file_exist",
             "args": {
-                "file": "data/trading_account/company_trading_records.jpg"
+                "file": "data/trading_account/trading_record_post.jpg"
           }
         }
     ]

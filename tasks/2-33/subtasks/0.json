@@ -3,7 +3,7 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "Print the top 3 students in midterm1 into a file named top3.txt. ",
+  "task": "Identify the top 3 students in midterm1. Create a new file top3.txt and write their names into it. ",
   "evaluation": [
     {
       "function": "evaluate_contain",
@@ -13,7 +13,7 @@
         "keywords": [
           "Tina",
           "Rachel",
-          "Sam"
+          "Carol"
         ]
       }
     }

@@ -3,7 +3,7 @@
     "date": "2020-05-01",
     "weekday": "Friday",
     "time": "10:00 AM",
-    "task": "Scan PDF homework to homework.docx for editing, make a calendar event due.ics to remind that homework is due on 5/31/2024 at 11:59 p.m",
+    "task": "Scan JPG homework to homework.docx for editing, make a calendar event Bob.ics to remind that homework is due on 5/31/2024 at 11:59 p.m",
     "evaluation": [
         {
             "function": "evaluate_file_exist",
@@ -14,7 +14,7 @@
         {
             "function": "evaluate_file_exist",
             "args": {
-                "file": "calendar/due.ics"
+                "file": "calendar/Bob.ics"
             }
         },
         {
@@ -25,7 +25,7 @@
                 "keywords": [
                     "homework",
                     "due",
-                    "20240531T235900Z"
+                    "20240531T235900"
                 ]
             }
         }

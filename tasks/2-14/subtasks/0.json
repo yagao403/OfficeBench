@@ -20,7 +20,7 @@
     {
         "function": "evaluate_file_exist",
         "args": {
-            "file": "calendar/Sam.ics"
+            "file": "calendar/Carol.ics"
         }
     }
 ]

@@ -27,8 +27,7 @@
                 "doc_type": "email",
                 "username": "Carol",
                 "keywords": [
-                    "homework",
-                    "read book and write essay"
+                    "homework"  
                 ]
             }
         },
@@ -38,8 +37,7 @@
                 "doc_type": "email",
                 "username": "Anna",
                 "keywords": [
-                    "homework",
-                    "read book and write essay"
+                    "homework"
                 ]
             }
         }

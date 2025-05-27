@@ -3,7 +3,7 @@
     "date": "2020-05-01",
     "weekday": "Friday",
     "time": "10:00 AM",
-    "task": "Extract key points from PDF research papers, summarize them in abstract.docx, and save it in email to professor Dan named paper.eml",
+    "task": "Extract key points from PDF research papers, summarize them in abstract.docx, and save it in email to professor Dan.",
     "evaluation": [
         {
             "function": "evaluate_file_exist",
@@ -18,9 +18,7 @@
                 "username": "Bob",
                 "keywords": [
                     "attention",
-                    "transformer",
-                    "encoder",
-                    "decoder"
+                    "transformer"
                 ]
             }
         },
@@ -31,9 +29,7 @@
                 "file": "data/abstract.docx",
                 "keywords": [
                     "attention",
-                    "transformer",
-                    "encoder",
-                    "decoder"
+                    "transformer"
                 ]
             }
         }

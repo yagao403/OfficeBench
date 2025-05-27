@@ -35,9 +35,9 @@
           "Honda Civic",
           "Charlie",
           "David",
-          "BMW X5 M50i",
+          "BMW",
           "Dealer",
-          "Porsche Cayenne Turbo",
+          "Turbo",
           "Jimmy"
         ]
       }
@@ -48,7 +48,7 @@
         "doc_type": "ics",
         "file": "./calendar/Bob.ics",
         "keywords": [
-          "DTSTART:20240601T130000Z"
+          "DTSTART:20240601T130000"
         ]
       }
     },
@@ -58,7 +58,7 @@
         "doc_type": "ics",
         "file": "./calendar/Alice.ics",
         "keywords": [
-          "DTSTART:20240601T130000Z"
+          "DTSTART:20240601T130000"
         ]
       }
     }

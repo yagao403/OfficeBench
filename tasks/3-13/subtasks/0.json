@@ -5,12 +5,7 @@
     "time": "10:00 AM",
     "task": "summarize content from meeting notification image and save in meeting.pdf, save pdf file in folder named schedule",
     "evaluation": [
-        {
-            "function": "evaluate_file_exist",
-            "args": {
-                "file": "data/meeting.pdf"
-            }
-        },
+ 
         {
             "function": "evaluate_file_exist",
             "args": {
@@ -21,7 +16,7 @@
             "function": "evaluate_contain",
             "args": {
                 "doc_type": "pdf",
-                "file": "./data/meeting.pdf",
+                "file": "data/schedule/meeting.pdf",
                 "keywords": [
                     "location",
                     "project"

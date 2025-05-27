@@ -3,7 +3,7 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "Extract the score and name then calculate the average score in excel score.xlsx",
+  "task": "Extract the score and name then calculate the average score in excel score.xlsx and insert it as a new row",
   "evaluation": [
     {
       "function": "evaluate_contain",

@@ -3,7 +3,7 @@
     "date": "2020-05-01",
     "weekday": "Friday",
     "time": "10:00 AM",
-    "task": "Extract the student name from docx then rename this pdf to {name}.pdf in shell, email teacher Alice with pdf file",
+    "task": "Extract the student name from docx then convert it to a pdf and rename the pdf to {name}.pdf in shell, email teacher Alice regarding the homework",
     "evaluation": [
         {
             "function": "evaluate_contain",
@@ -12,8 +12,7 @@
                 "username": "Alice",
                 "keywords": [
                     "Linda",
-                    "Homework 1",
-                    "CSE 221"
+                    "Homework"
                 ]
             }
         },

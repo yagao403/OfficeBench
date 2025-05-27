@@ -17,8 +17,8 @@
                 "doc_type": "ics",
                 "file": "calendar/Bob.ics",
                 "keywords": [
-                    "invitation",
-                    "DTSTART:20241115T130000Z"
+                    "Conference",
+                    "DTSTART:20241115T060000"
                 ]
             }
         },

@@ -3,7 +3,7 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "calculate the average of two midterm scores, write in the bottom row of the score excel file with header 'Average'",
+  "task": "calculate the average of two midterm scores, write in the bottom row of the score excel file with header 'Average'. The average score is two decimal places.",
   "evaluation": [
     {
       "function": "evaluate_excel_cell_value",
@@ -14,17 +14,17 @@
             "row": "22",
             "col": "1",
             "value": "Average"
-          },
-          {
-            "row": "22",
-            "col": "2",
-            "value": "80.5"
-          },
-          {
-            "row": "22",
-            "col": "3",
-            "value": "78.3"
           }
+        ]
+      }
+    },
+    {
+      "function": "evaluate_contain",
+      "args": {
+        "doc_type": "xlsx",
+        "file": "./data/score.xlsx",
+        "keywords": [
+           "80.05", "78.3"
         ]
       }
     }

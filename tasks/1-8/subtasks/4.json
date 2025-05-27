@@ -3,7 +3,7 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "delete all amounts in shopping list excel file",
+  "task": "delete the whole amount column in shopping list excel file",
   "evaluation": [
     {
       "function": "evaluate_exact_match",

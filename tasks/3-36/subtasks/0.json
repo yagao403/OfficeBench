@@ -23,7 +23,7 @@
             "function": "evaluate_contain",
             "args": {
                 "doc_type": "ics",
-                "file": "calendar/Alice.ics",
+                "file": "calendar/Bob.ics",
                 "keywords": [
                     "DTSTART:20240601T103000"
                 ]

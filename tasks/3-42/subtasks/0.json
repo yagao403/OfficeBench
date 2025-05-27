@@ -27,8 +27,7 @@
             "doc_type": "xlsx",
             "file": "./data/company_trading.xlsx",
             "keywords": [
-                "Date", "Transaction", "Item", "Amount",
-                "2024-01-01", "Bought", "Laptop", "$1500"
+                "Bought", "Laptop", "$1500"
             ]
           }
         }

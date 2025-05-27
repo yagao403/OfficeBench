@@ -3,14 +3,24 @@
   "date": "2020-05-01",
   "weekday": "Friday",
   "time": "10:00 AM",
-  "task": "swap the highest and second highest item in budget excel file",
+  "task": "swap the whole rows of the highest and second highest item in budget excel file",
   "evaluation": [
     {
-      "function": "evaluate_exact_match",
+      "function": "evaluate_excel_cell_value",
       "args": {
-        "doc_type": "xlsx",
-        "result_file": "./data/company_budget.xlsx",
-        "expected_file": "../../../../reference/company_budget.xlsx"
+        "file": "./data/company_budget.xlsx",
+        "matches": [
+          {
+            "row": "2",
+            "col": "2",
+            "value": "50000"
+          },
+          {
+            "row": "3",
+            "col": "2",
+            "value": "2000000"
+          }
+        ]
       }
     }
   ]
